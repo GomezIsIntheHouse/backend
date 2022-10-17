@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "nombre": "Goma de Borrar",
+    "precio": 15
+  },
+  {
+    "id": 2,
+    "nombre": "Casa",
+    "precio": 15,
+    "thumbnail": "url"
+  },
+  {
+    "id": 3,
+    "nombre": "Casa",
+    "precio": 15,
+    "thumbnail": "url"
+  }
+]
