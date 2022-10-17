@@ -2,18 +2,18 @@
   {
     "id": 1,
     "nombre": "Goma de Borrar",
-    "precio": 15
+    "precio": 7.3
   },
   {
     "id": 2,
-    "nombre": "Casa",
-    "precio": 15,
+    "nombre": "Papel A4",
+    "precio": 1.55,
     "thumbnail": "url"
   },
   {
     "id": 3,
-    "nombre": "Casa",
-    "precio": 15,
+    "nombre": "Regla",
+    "precio": 9.7,
     "thumbnail": "url"
   }
 ]
