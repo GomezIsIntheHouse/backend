@@ -17,18 +17,25 @@ app.get('/productos', async(_req,res)=>{
     }
 })
 
-
-// app.get('/productos', (_req,res)=>{
-//     try {          
-//         const respClase =  obj1.getAll()
-//         console.log(respClase)
-//         res.send({data:respClase})
+app.get('/productoRandom', async(_req,res)=>{
+    try {
+        min = Math.ceil(1);
+        max = Math.floor(4);
+        const number = Math.floor(Math.random() * (max - min) + min);
         
-    
-//     } catch (error) {
-//         console.log('error',error)
-//     }
-// })
+        const respClase = await obj1.getById(number)
+        res.send({
+            id:number,
+            data:respClase
+        })
+
+    } catch (error) {
+        console.log('error',error)
+    }
+})
+
+
+
 
 
 app.get('/ping', (_req,res)=>{

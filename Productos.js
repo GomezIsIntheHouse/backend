@@ -42,51 +42,43 @@ module.exports = class Productos{
         })     
     }
 
-    getById(id){     
-        fs.readFile(`./${this.filename}.txt`,'utf-8',(error,data)=>{
-            if(error){
-                throw new Error(error)
-            }else{
-                let jsonData = JSON.parse(data)
-                if(jsonData[id]!=undefined){
+    async getById(id){     
 
-                    jsonData.map((el)=>{
+        let re = fs.promises.readFile(`./${this.filename}.txt`,'utf-8') .then((data)=>{
+            let jsonData = JSON.parse(data)
+            let ides = jsonData.map((e)=>{
+                return e.id
+            })
+          
+            let ct = ides.find(el=>el == id)
+            
+                if(ct!=undefined){
+    
+                    let rta = jsonData.filter((el)=>{
                         if(el.id == id){
-                            console.log(`El elemento con id: ${id} es: `, el)
+                           return el    
                         }
                     })
+                    return rta
                 }else{
                     console.log(`Elemento con id ${id}, no existe`)
                 }
-
-            }
         })
+        .catch((err)=>console.log(err))
+      
+        return re
+        
     }
-    
-    async getAll(){
-       
-        fs.promises.readFile(`./${this.filename}.txt`,'utf-8')
-            .then(data =>{
-                        let jsonData = JSON.parse(data)
-                        console.log(jsonData)
-                        return jsonData       
-                    })
-            .catch(error=>console.log(error))
-    }
-
-    //  getAll(){
-       
-    //     fs.readFile(`./${this.filename}.txt`,'utf-8',(err,data)=>{
-    //         if(err){
-    //             console.log(err)
-    //         }else{
-    //             let jsonData = JSON.parse(data)
-    //             console.log(jsonData)
-    //             return jsonData       
-    //         }
-    //     })
-           
-    // }
+        
+        async getAll(){
+            let res = await  fs.promises.readFile(`./${this.filename}.txt`,'utf-8')
+                 .then(data =>{
+                             let jsonData = JSON.parse(data)
+                            return jsonData      
+                         })
+                 .catch(error=>console.log(error))
+                 return res
+        }
 
     deleteById(id){
       
